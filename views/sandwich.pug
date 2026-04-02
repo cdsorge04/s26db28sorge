@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1= title
+  -
+    let results = [
+      {sandwich_name: "bigmac", restraunt: "mcdonalds", price: 10},
+      {sandwich_name: "whopper", restraunt: "burger king", price: 12},
+      {sandwich_name: "sub", restraunt: "subway", price: 8}
+    ]
+  div(class="container-fluid")
+    div(class="row")
+      each item in results
+        div(class="col-sm-2")
+          p Sandwich: #{item.sandwich_name}
+          p Restaurant: #{item.restraunt}
+          p Price: $#{item.price}

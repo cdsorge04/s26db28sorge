@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  p Yay, my server works, yippee or something like that.
+  button(type="button", class="btn btn-secondary", 
+    onclick="reduce()") sample button
+  div(id="use") take some away
+  a(href="/sandwich") View sandwich search results
+  script.
+    let current = 11;
+    let quantity = 2;
+    function reduce() {
+      current = current - quantity;
+      if (current < 0) {
+        current = 0;
+      }
+      document.getElementById("use").innerHTML = `Reduced by 
+        ${quantity} to ${current}`;
+    }
