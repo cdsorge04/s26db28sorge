@@ -14,3 +14,26 @@ exports.chips_delete = function(req, res) {
 exports.chips_update_put = function(req, res) {
     res.send('NOT IMPLEMENTED: Chips update PUT ' + req.params.id);
 };
+exports.chips_list = async function(req, res) {
+    try {
+        const theChips = await chips.find();
+        res.send(theChips);
+    }
+    catch (err) {
+        res.status(500);
+        res.send(`{"error": ${err}}`);
+    }
+};
+exports.chips_view_all_Page = async function(req, res) {
+    try {
+        const theChips = await chips.find();
+        res.render('chips', {
+            title: 'Chips Search Results',
+            results: theChips
+        });
+    }
+    catch (err) {
+        res.status(500);
+        res.send(`{"error": ${err}}`);
+    }
+};

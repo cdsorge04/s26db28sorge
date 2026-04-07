@@ -1,0 +1,11 @@
+extends layout
+block content
+  h1= title
+  - let items = results
+  .container-fluid
+    .row
+      each item in items
+        .col-sm-2
+          p chipsBrand: #{item.chipsBrand}
+          p chipsFlavor: #{item.chipsFlavor}
+          p cost: #{item.cost}

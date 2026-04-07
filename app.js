@@ -20,6 +20,7 @@ var sandwichrouter = require('./routes/sandwich');
 var gridRouter = require('./routes/grid');
 var pickRouter = require('./routes/pick');
 var resourceRouter = require('./routes/resource');
+var chipsRouter = require('./routes/chips');
 var app = express();
 async function recreateDB() {
   await chips.deleteMany();
@@ -87,6 +88,7 @@ app.use('/sandwich', sandwichrouter);
 app.use('/grid', gridRouter);
 app.use('/selector', pickRouter);
 app.use('/resource', resourceRouter);
+app.use('/chips', chipsRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
