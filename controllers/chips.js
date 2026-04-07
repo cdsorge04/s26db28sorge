@@ -37,3 +37,18 @@ exports.chips_view_all_Page = async function(req, res) {
         res.send(`{"error": ${err}}`);
     }
 };
+exports.chips_create_post = async function(req, res) {
+    console.log(req.body);
+    let document = new chips();
+    document.chipsBrand = req.body.chipsBrand;
+    document.chipsFlavor = req.body.chipsFlavor;
+    document.cost = req.body.cost;
+    try {
+        let result = await document.save();
+        res.send(result);
+    }
+    catch (err) {
+        res.status(500);
+        res.send(`{"error": ${err}}`);
+    }
+};
