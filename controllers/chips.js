@@ -2,8 +2,15 @@ var chips = require('../models/chips');
 exports.chips_list = function(req, res) {
     res.send('NOT IMPLEMENTED: Chips list');
 };
-exports.chips_detail = function(req, res) {
-    res.send('NOT IMPLEMENTED: Chips detail: ' + req.params.id);
+exports.chips_detail = async function(req, res) {
+    console.log("detail " + req.params.id)
+    try {
+        let result = await chips.findById(req.params.id)
+        res.send(result)
+    } catch (error) {
+        res.status(500)
+        res.send(`{"error": "document for id ${req.params.id} not found"}`)
+    }
 };
 exports.chips_create_post = function(req, res) {
     res.send('NOT IMPLEMENTED: Chips create POST');
