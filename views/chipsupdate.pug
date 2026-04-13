@@ -1,0 +1,38 @@
+extends layout
+block content
+  h1= title
+  - let chipsid = toShow._id
+  - let chipsBrand = toShow.chipsBrand
+  - let chipsFlavour = toShow.chipsFlavor
+  - let chipsCost = toShow.cost
+  div.row(class='mb-2')
+    div.mr-1 ID is
+    div #{chipsid}
+  - let actionid = "/resource/chips/" + chipsid
+  form(id='chipsForm', action=actionid, method="PUT")
+    div.form-group
+      label.costumeAttr(for='chipsBrand')
+      input#costume_type(type='text', name='chipsBrand', value=chipsBrand)
+    div.form-group
+      label.costumeAttr(for='ChipsFlavour')
+      input#size(type='text', name='chipsFlavor', value=chipsFlavour)
+    div.form-group
+      label.costumeAttr(for='chipsCost')
+      input#cost(type='number', name='cost', value=chipsCost)
+    input(type='submit')
+  script.
+    document.forms['chipsForm'].addEventListener('submit', 
+        (event) => {
+            event.preventDefault();
+            fetch(event.target.action, {
+                method: 'PUT',
+                body: new URLSearchParams(new FormData(
+                    event.target))
+            }).then((resp) => {
+                return resp.json();
+            }).then((body) => {
+                alert("Update succeeded");
+            }).catch((error) => {
+                alert("Update failed " + error);
+            });
+        });

@@ -102,3 +102,17 @@ exports.chips_view_one_Page = async function(req, res) {
         res.send(`{'error': '${err}'}`);
     }
 };
+exports.chips_update_Page = async function(req, res) {
+    console.log("update view for item " + req.query.id)
+    try {
+        let result = await chips.findById(req.query.id)
+        res.render('chipsupdate', { 
+            title: 'Chips Update', 
+            toShow: result 
+        });
+    }
+    catch(err) {
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
+    }
+};

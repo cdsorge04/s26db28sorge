@@ -7,4 +7,5 @@ router.put('/chips/:id', chips_controller.chips_update_put);
 router.delete('/chips/:id', chips_controller.chips_delete);
 router.get('/detail', chips_controller.chips_view_one_Page);
 router.get('/create', chips_controller.chips_create_Page);
+router.get('/update', chips_controller.chips_update_Page);
 module.exports = router;
