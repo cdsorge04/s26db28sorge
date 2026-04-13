@@ -6,3 +6,7 @@ body {
 a {
   color: #00B7FF;
 }
+.chipsAttr {
+  background-color: rgb(251, 255, 127);
+  width: 120px;
+}

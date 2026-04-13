@@ -1,0 +1,20 @@
+extends layout
+block content
+  h1= title
+  - let chipsid = toShow._id
+  - let chipsBrand = toShow.chipsBrand
+  - let chipsFlavor = toShow.chipsFlavor
+  - let chipsCost = toShow.cost
+  div
+    div.row
+      div(class='costumeAttr mr-3') Chips ID is:
+      div #{chipsid}
+    div.row
+      div(class='costumeAttr mr-3') Chips Brand is:
+      div #{chipsBrand}
+    div.row
+      div(class='costumeAttr mr-3') Chips Flavor is:
+      div #{chipsFlavor}
+    div.row
+      div(class='costumeAttr mr-3') Chips Cost is:
+      div #{chipsCost}

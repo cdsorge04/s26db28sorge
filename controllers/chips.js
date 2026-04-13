@@ -83,3 +83,16 @@ exports.chips_create_post = async function(req, res) {
         res.send(`{"error": ${err}}`);
     }
 };
+exports.chips_view_one_Page = async function(req, res) {
+    console.log("single view for id " + req.query.id);
+    try {
+        let result = await chips.findById(req.query.id);
+        res.render('chipsdetail', {
+            title: 'Chips Details',
+            toShow: result
+        });
+    } catch (err) {
+        res.status(500);
+        res.send(`{'error': '${err}'}`);
+    }
+};
