@@ -1,0 +1,29 @@
+extends layout
+block content
+  h1= title
+  form(id='ChipsForm', action="/resource/chips", method="POST")
+    div.form-group
+      label.chipsAttr(for='chipsBrand')
+      input#chipsBrand(type='text', name='chipsBrand')
+    div.form-group
+      label.chipsAttr(for='chipsFlavor')
+      input#chipsFlavor(type='text', name='chipsFlavor')
+    div.form-group
+      label.chipsAttr(for='cost')
+      input#cost(type='number', name='cost')
+    input(type='submit')
+  script.
+    document.forms['ChipsForm'].addEventListener('submit', 
+        (event) => {
+            event.preventDefault();
+            fetch(event.target.action, {
+                method: 'POST',
+                body: new URLSearchParams(new FormData(event.target))
+            }).then((resp) => {
+                return resp.json();
+            }).then((body) => {
+                alert("Save succeded");
+            }).catch((error) => {
+                alert("Save failed " + error);
+            });
+        });

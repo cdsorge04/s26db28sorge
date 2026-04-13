@@ -9,8 +9,14 @@ exports.chips_detail = async function(req, res) {
         res.send(`{"error": "document for id ${req.params.id} not found"}`)
     }
 };
-exports.chips_create_post = function(req, res) {
-    res.send('NOT IMPLEMENTED: Chips create POST');
+exports.chips_create_Page = function(req, res) {
+    console.log("create view");
+    try {
+        res.render('chipscreate', { title: 'Chips Create' });
+    } catch (err) {
+        res.status(500);
+        res.send(`{'error': '${err}'}`);
+    }
 };
 exports.chips_delete = async function(req, res) {
     console.log("delete " + req.params.id);
