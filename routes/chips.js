@@ -4,4 +4,5 @@ var router = express.Router();
 router.get('/', chips_controller.chips_view_all_Page);
 router.get('/chips/:id', chips_controller.chips_detail);
 router.put('/chips/:id', chips_controller.chips_update_put);
+router.delete('/chips/:id', chips_controller.chips_delete);
 module.exports = router;
