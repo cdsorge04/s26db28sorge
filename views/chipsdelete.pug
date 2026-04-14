@@ -1,0 +1,45 @@
+extends layout
+block content
+  h1= title
+  if toShow
+    - let chipsid = toShow._id
+    div(class="card")
+      div(class="card-body")
+        h5(class="card-title")
+        p(class="card-text")
+          strong ID:
+          |  #{toShow._id}
+        p(class="card-text")
+          strong Type:
+          |  #{toShow.chipsBrand}
+        p(class="card-text")
+          strong Size:
+          |  #{toShow.chipsFlavor}
+        p(class="card-text")
+          strong Cost:
+          |  #{toShow.cost}
+        button(class="btn btn-danger me-2" onclick=
+            `deleteItem('${chipsid}')`)
+        button(class="btn btn-secondary" onclick=
+            "cancelDelete()")
+  else
+    h2 No item found
+  script.
+    function deleteItem(id) {
+      fetch("/resource/chips/" + id, {
+        method: "DELETE"
+      })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        alert("Delete succeeded");
+        window.location.href = "/chips";
+      })
+      .catch((err) => {
+        alert("Delete failed " + err);
+      });
+    }
+    function cancelDelete() {
+      window.location.href = "/chips";
+    }
