@@ -1,11 +1,15 @@
 extends layout
 block content
   h1= title
-  - let items = results
-  .container-fluid
-    .row
+  - let items = results;
+  div.container-fluid
+    div.row
       each item in items
-        .col-sm-2
-          p chipsBrand: #{item.chipsBrand}
-          p chipsFlavor: #{item.chipsFlavor}
-          p cost: #{item.cost}
+        div.row-sm-2.m-1
+          span Item #{item.chipsBrand}(#{item.chipsFlavor}) 
+            is #{item.cost}
+          a.btn.btn-primary(href=`/costumes/update?id=${item._id}`) Update
+script.
+  function dispatch(path){
+    window.location.href = path
+  }
