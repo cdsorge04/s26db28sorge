@@ -3,7 +3,7 @@ var passport = require('passport');
 var router = express.Router();
 var Account = require('../models/account');
 router.get('/', function (req, res) {
-  res.render('index', { title: 'Costume App', user: req.user });
+  res.render('index', { title: 'Chips App', user: req.user });
 });
 router.get('/register', function(req, res) {
   res.render('register', { title: 'Costume App Registration' });
