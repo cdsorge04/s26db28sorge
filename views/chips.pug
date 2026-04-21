@@ -1,14 +1,16 @@
 extends layout
 block content
   h1= title
-  - let items = results
   div.container-fluid
     div.row.m-1
-      each item in items
-        - let destination = `dispatch("/chips/update?id=${item._id}")`
-        div.row-sm-2.m-1
-          | Item #{item.chip_type}(#{item.size}) is #{item.cost}
-          button.btn.btn-primary.ml-1(onclick=destination) Update
+      div.col-sm-12.mb-3
+        button.btn.btn-success(onclick='dispatch("/chips/create")') Create
+      each item in results
+        div.col-sm-12.m-1
+          | Item #{item.chipsBrand} (#{item.chipsFlavor}) is #{item.cost}
+          button.btn.btn-info.ms-2(onclick=`dispatch("/chips/detail?id=${item._id}")`) Details
+          button.btn.btn-primary.ms-2(onclick=`dispatch("/chips/update?id=${item._id}")`) Update
+          button.btn.btn-danger.ms-2(onclick=`dispatch("/chips/delete?id=${item._id}")`) Delete
   script.
     function dispatch(path){
       window.location.href = path
